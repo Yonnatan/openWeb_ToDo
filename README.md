@@ -45,8 +45,6 @@ You should be able to access this application at `http://127.0.0.1:4040`
 >**NOTE**<br>
 >If you modified the port in the `.env` file, you should access the application for the port you set
 
-## Conclusion 
+## Credits
 
-This Project is an example to teach CRUD using the default `database/sql` package and how to serve html templates properly.
-
-If you have anything to add to this, please send in a PR as it will no longer be actively maintained by [me](https://github.com/ichtrojan).
+Mirrored from https://github.com/ichtrojan/go-todo

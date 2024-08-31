@@ -1,0 +1,25 @@
+version: 2.1
+
+jobs:
+  build-and-push:
+    docker:
+      - image: cimg/go:1.20
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build Docker image
+          command: docker build -t ${DOCKERHUB_USERNAME}/openweb-todo:${CIRCLE_SHA1} .
+      - run:
+          name: Login to DockerHub
+          command: echo $DOCKERHUB_PAT | docker login -u $DOCKERHUB_USERNAME --password-stdin
+      - run:
+          name: Push Docker image
+          command: docker push ${DOCKERHUB_USERNAME}/openweb-todo:${CIRCLE_SHA1}
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build-and-push:
+          context: docker-hub-creds

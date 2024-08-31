@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: todo-app
+  template:
+    metadata:
+      labels:
+        app: todo-app
+    spec:
+      initContainers:
+      - name: wait-for-mysql
+        image: busybox
+        command: ['sh', '-c', 'until nc -z mysql 3306; do echo waiting for mysql; sleep 5; done;']
+      containers:
+      - name: todo-app
+        image: coffee2code/openweb-todo:master-fff59a9
+        ports:
+        - containerPort: 4040

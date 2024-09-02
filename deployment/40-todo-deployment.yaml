@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: todo-app
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: todo-app
@@ -12,6 +12,16 @@ spec:
       labels:
         app: todo-app
     spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - todo-app
+            topologyKey: kubernetes.io/hostname
       initContainers:
       - name: wait-for-mysql
         image: busybox

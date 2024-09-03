@@ -7,7 +7,7 @@ data:
     events {}
     http {
       server {
-        listen 80;
+        listen 8080;
         server_name tools.devops-openweb.com;
 
         location /todo {

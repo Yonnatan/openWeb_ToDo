@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: todo-app
 spec:
-  replicas: 2
   selector:
     matchLabels:
       app: todo-app
@@ -31,3 +30,10 @@ spec:
         image: coffee2code/openweb-todo:master-fff59a9
         ports:
         - containerPort: 4040
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 200m
+            memory: 256Mi

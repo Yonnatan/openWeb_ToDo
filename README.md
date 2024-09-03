@@ -38,7 +38,7 @@ HA - Multiple replicas + AntiAffinity are set in todo-deployment.yaml
 Durability - mysql will run with persistant volume. 
 
 6. To leave it simple Instead of using ingress controlelr I just implemented Nginx Reverse proxy 
-to redirect <URL>/todo requests to <todo-app-service>:4040 .
+to redirect LB/todo requests to todo-app-service:4040 .
 
 7. See below :
 

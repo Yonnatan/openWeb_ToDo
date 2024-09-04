@@ -27,7 +27,7 @@ spec:
         command: ['sh', '-c', 'until nc -z mysql 3306; do echo waiting for mysql; sleep 5; done;']
       containers:
       - name: todo-app
-        image: coffee2code/openweb-todo:master-fff59a9
+        image: coffee2code/openweb-todo:master-652b6c6
         ports:
         - containerPort: 4040
         resources:
